@@ -60,6 +60,18 @@ public issue**; follow the process in [SECURITY.md](./SECURITY.md).
 - **Audit Log** — full action trail
 - **Industry Add-Ons** — care homes (QR clock-in, visit logging), construction, cleaning, security
 
+## Screenshots
+
+> 📸 Screenshots coming soon. Drop images into `docs/screenshots/` and they'll
+> render below. A live demo is available at
+> [leavely.online/demo](https://leavely.online/demo) (logs in as a demo owner).
+
+<!--
+![Dashboard](docs/screenshots/dashboard.png)
+![Team calendar](docs/screenshots/calendar.png)
+![Leave request](docs/screenshots/leave-request.png)
+-->
+
 ## Setup
 
 ```bash

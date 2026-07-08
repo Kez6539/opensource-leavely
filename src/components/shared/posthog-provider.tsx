@@ -2,8 +2,11 @@
 
 import { useEffect, type ReactNode } from "react";
 
-const POSTHOG_KEY = "phc_Fp8exoB6FjNZhs1IULmhxctU51p4q9Tf4DNQ12FIlZD";
-const POSTHOG_HOST = "https://eu.i.posthog.com";
+// Analytics are opt-in. Set NEXT_PUBLIC_POSTHOG_KEY (and optionally
+// NEXT_PUBLIC_POSTHOG_HOST) in your env to enable PostHog. If unset,
+// the provider is a no-op — nothing is loaded or sent.
+const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com";
 const POSTHOG_IDLE_DELAY_MS = 1200;
 
 type PostHogClient = typeof import("posthog-js").default;
@@ -29,7 +32,7 @@ function isBot(): boolean {
 
 export function PostHogProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
-    if (typeof window === "undefined" || isBot()) return undefined;
+    if (typeof window === "undefined" || isBot() || !POSTHOG_KEY) return undefined;
 
     const timeoutId = window.setTimeout(() => {
       void loadPostHog().then((posthog) => {

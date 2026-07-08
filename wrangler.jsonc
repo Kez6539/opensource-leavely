@@ -20,7 +20,8 @@
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
-      "id": "f353376967a643eba190bf1dd67f693e"
+      "id": "<your-hyperdrive-id>"
+      // Replace the id above with your own Cloudflare Hyperdrive binding id.
       // localConnectionString is intentionally NOT committed.
       // For local `wrangler dev`/`wrangler preview`, copy `.dev.vars.example`
       // to `.dev.vars` and set DATABASE_URL there — wrangler will read it.

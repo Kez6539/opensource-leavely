@@ -1,0 +1,16 @@
+name: Trial Milestone Tracking
+
+on:
+  schedule:
+    - cron: "35 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  trial-milestones:
+    runs-on: [self-hosted, hermes]
+    steps:
+      - name: Track trial milestones and at-risk trials
+        run: |
+          curl -fsS "https://leavely.online/api/cron/trial-milestones" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --max-time 120

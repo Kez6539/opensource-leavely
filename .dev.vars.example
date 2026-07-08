@@ -1,0 +1,19 @@
+# Copy to .dev.vars (gitignored) and fill in for local `wrangler dev` / `wrangler preview`.
+# Production reads these from GitHub Actions secrets + the Hyperdrive binding.
+
+# Neon Postgres (or any Postgres) for local dev. Create your own database.
+DATABASE_URL="postgresql://neondb_owner:<password>@<endpoint>.aws.neon.tech/neondb?sslmode=require"
+
+# iron-session password (any 32+ char string for local dev)
+SESSION_PASSWORD="change-me-locally-at-least-32-characters-long-please"
+
+# Optional — only set if testing flows that need them
+# NEXT_PUBLIC_CRISP_WEBSITE_ID=""
+# RESEND_API_KEY=""
+# STRIPE_SECRET_KEY=""
+# STRIPE_WEBHOOK_SECRET=""
+# GOOGLE_CLIENT_ID=""
+# GOOGLE_CLIENT_SECRET=""
+# LINKEDIN_CLIENT_ID=""
+# LINKEDIN_CLIENT_SECRET=""
+# ANTHROPIC_API_KEY=""

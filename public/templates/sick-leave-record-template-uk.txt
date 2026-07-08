@@ -1,0 +1,27 @@
+Sick leave record template - UK employer checklist
+
+Employee:
+Manager:
+First day of sickness:
+Normal working days affected:
+Reason category:
+Notification received by:
+Notification time:
+
+SSP and evidence
+- Confirm whether the employee has been sick for at least one full working day.
+- Record average weekly earnings or 80% calculation where relevant.
+- Record SSP decision and pay dates.
+- Self-certification received for first 7 calendar days where needed.
+- Fit note received if absence lasts more than 7 calendar days.
+- Record fit note dates and any suggested adjustments.
+
+Return to work
+- Return date:
+- RTW interview completed:
+- Work-related factors discussed:
+- Support or adjustments agreed:
+- Follow-up date:
+- Trigger point or Bradford Factor review needed:
+
+Notes:

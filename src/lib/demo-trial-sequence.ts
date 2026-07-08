@@ -1,0 +1,4 @@
+export const DEMO_TRIAL_SEQUENCE_PENDING = 'demo_trial_sequence_pending'
+export const DEMO_TRIAL_SEQUENCE_EMAIL_1_SENT = 'demo_trial_sequence_email_1_sent'
+export const DEMO_TRIAL_SEQUENCE_EMAIL_2_SENT = 'demo_trial_sequence_email_2_sent'
+export const DEMO_TRIAL_SEQUENCE_EMAIL_3_SENT = 'demo_trial_sequence_email_3_sent'

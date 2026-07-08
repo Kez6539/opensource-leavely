@@ -1,0 +1,16 @@
+name: Trial Expiry Email Sequence
+
+on:
+  schedule:
+    - cron: "50 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  trial-expiry-sequence:
+    runs-on: [self-hosted, hermes]
+    steps:
+      - name: Send trial expiry sequence emails
+        run: |
+          curl -fsS "https://leavely.online/api/cron/trial-expiry-sequence" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --max-time 120

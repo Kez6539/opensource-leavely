@@ -1,0 +1,68 @@
+name: Deploy Leavely
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE'
+  workflow_dispatch:
+
+concurrency:
+  group: leavely-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy to Cloudflare
+    runs-on: [self-hosted, hermes]
+    env:
+      CI: true
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      SESSION_PASSWORD: ${{ secrets.SESSION_PASSWORD }}
+      NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
+      NEXT_PUBLIC_APP_URL: https://leavely.online
+      # Wrangler 4 demands a localConnectionString on Hyperdrive bindings even at
+      # build time (it calls getPlatformProxy which calls applyHyperdriveEnvVars).
+      # We removed the value from wrangler.jsonc to avoid committing the password,
+      # so feed wrangler the same URL we already have as DATABASE_URL via the
+      # env-var override format. Production routes through the Hyperdrive id anyway.
+      CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE: ${{ secrets.DATABASE_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      # The generated client lives in src/generated/prisma which is
+      # gitignored — a fresh CI checkout has no client and the build
+      # fails with stale-enum type errors without this.
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      # `pnpm deploy` (no `run`) is pnpm's built-in workspace deploy
+      # command and exits with ERR_PNPM_NOTHING_TO_DEPLOY — the package
+      # script must be invoked via `pnpm run deploy`.
+      - name: Build and deploy
+        run: pnpm run deploy

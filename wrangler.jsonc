@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "leavely",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "routes": [
+    { "pattern": "leavely.online", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "leavely"
+    }
+  ],
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "f353376967a643eba190bf1dd67f693e"
+      // localConnectionString is intentionally NOT committed.
+      // For local `wrangler dev`/`wrangler preview`, copy `.dev.vars.example`
+      // to `.dev.vars` and set DATABASE_URL there — wrangler will read it.
+      // Production routes through Hyperdrive via the `id` above.
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+name: Demo Reset
+
+# Weekly reset of the shared `acme` demo tenant so prospects always land
+# on fresh seed data before it can sit stale for more than 7 days. The
+# endpoint wipes + reseeds in one transaction and refuses to touch anything
+# but the hardcoded demo slug.
+on:
+  schedule:
+    - cron: "15 3 * * 1" # 03:15 UTC every Monday
+  workflow_dispatch:
+
+jobs:
+  reset-demo:
+    runs-on: [self-hosted, hermes]
+    steps:
+      - name: Reset demo tenant
+        run: |
+          curl -fsS -X POST "https://leavely.online/api/cron/reset-demo" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --max-time 180

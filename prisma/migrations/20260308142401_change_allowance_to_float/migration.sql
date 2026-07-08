@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "LeaveBalance" ALTER COLUMN "allowance" SET DATA TYPE DOUBLE PRECISION;

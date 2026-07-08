@@ -1,0 +1,17 @@
+name: Demo Trial Email Sequence
+
+on:
+  schedule:
+    - cron: "35 8 * * *"
+  workflow_dispatch:
+
+jobs:
+  demo-trial-sequence:
+    runs-on: [self-hosted, hermes]
+    steps:
+      - name: Send demo-to-trial sequence emails
+        run: |
+          curl -fsS "https://leavely.online/api/cron/demo-trial-sequence" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --max-time 120
+

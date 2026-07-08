@@ -1,0 +1,16 @@
+name: Trial Onboarding Email Sequence
+
+on:
+  schedule:
+    - cron: "20 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  trial-onboarding-sequence:
+    runs-on: [self-hosted, hermes]
+    steps:
+      - name: Send trial onboarding sequence emails
+        run: |
+          curl -fsS "https://leavely.online/api/cron/trial-onboarding-sequence" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --max-time 120

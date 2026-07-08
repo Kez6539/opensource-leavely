@@ -222,7 +222,7 @@ export default async function EmployeeDetailPage({
   //   1) The previous implementation summed `used + pending` from sickness
   //      LeaveBalance rows, which Prisma scopes to the current leave year
   //      only via getEmployeeBalances → year filter. Anything older was
-  //      silently invisible — Chris-Bound on the live tenant showed "1"
+  //      silently invisible — an employee on the live tenant showed "1"
   //      while several historical sickness reports existed.
   //   2) The KPI tile is labelled "Sickness" with no unit, so a number that
   //      represents days is read as incidents by humans. Switching to a

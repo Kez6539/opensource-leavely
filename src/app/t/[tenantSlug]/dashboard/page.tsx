@@ -175,7 +175,7 @@ export default async function DashboardPage({
                   endDate: string
                 }
 
-            // Collapse company-closure auto-bookings: 10 rows of "Aaron · Holiday"
+            // Collapse company-closure auto-bookings: 10 rows of "Alex · Holiday"
             // for the Christmas Shutdown become one "Christmas Shutdown · 10 staff"
             // row. Counts are computed across the full fetched window so the
             // collapsed row reflects everyone, even if the un-collapsed list

@@ -1358,7 +1358,7 @@ export async function extendLeaveRequest(
     // they're extending FROM. Without this, "must be after the current end
     // date" leaves them guessing whether the leave is currently a single
     // day or a multi-day block — which is exactly what tripped up the
-    // "extend Chris's sickness through tomorrow" demo.
+    // "extend an employee's sickness through tomorrow" demo.
     const current = formatLocalDayGB(lr.endDate)
     throw new UserError(
       `This leave currently ends on ${current}. To extend it, pick a date after ${current}. (Use "Edit dates" if you need to move the leave to a completely different range.)`

@@ -186,7 +186,7 @@ export async function registerAction(_prev: RegisterState, formData: FormData): 
 
   // Create session. We MUST overwrite isSuperAdmin / impersonatingFrom /
   // isDemo explicitly — the registerAction can be hit by a browser that
-  // already has a super-admin or impersonation session (e.g. Keiron
+  // already has a super-admin or impersonation session (e.g. a super-admin
   // signing up a fresh test account in the same browser). Without these
   // explicit resets, the new account inherits the previous session's
   // super-admin flag and sees the See Clients sidebar entry.

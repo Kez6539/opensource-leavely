@@ -283,7 +283,7 @@ export default async function LeaveDetailPage({
                   `policy.isSystemType === 'sickness'`). That hid the button
                   entirely for any tenant whose sickness policy predated the
                   isSystemType column or hadn't been auto-tagged yet — the
-                  symptom Keiron hit was "I know Chris is off sick tomorrow
+                  symptom reported was "I know an employee is off sick tomorrow
                   and it didn't let me extend it". Extend is useful for any
                   approved leave (not just sickness) — the server-side
                   balance gate already prevents over-allocation for non

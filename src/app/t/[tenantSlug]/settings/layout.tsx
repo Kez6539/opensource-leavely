@@ -4,7 +4,7 @@ import { requireTenant } from '@/lib/tenant'
 import { isAtLeast } from '@/lib/rbac'
 import { SettingsTabs } from './settings-tabs'
 
-// Hannah's bug: an EMPLOYEE could see Settings, Billing, Users, etc. via
+// Reported bug: an EMPLOYEE could see Settings, Billing, Users, etc. via
 // the unfiltered sidebar AND by URL-editing. The sidebar is now filtered
 // in `src/components/layout/sidebar-nav.tsx`, but defence in depth means
 // we also enforce ADMIN+ at the layout level so URL-editing or stale

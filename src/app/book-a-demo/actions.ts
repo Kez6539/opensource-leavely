@@ -92,7 +92,7 @@ export async function submitDemoLead(data: DemoLeadData) {
   const eEmailAttr = encodeURIComponent(parsed.email)
   const ePhoneAttr = encodeURIComponent(parsed.phone)
 
-  // Email to Keiron. fireAndForget registers the send with waitUntil() —
+  // Email to the site owner. fireAndForget registers the send with waitUntil() —
   // a bare .catch() promise gets cancelled when the Workers isolate
   // returns the response (see src/lib/cloudflare-ctx.ts).
   fireAndForget(getResend().emails.send({

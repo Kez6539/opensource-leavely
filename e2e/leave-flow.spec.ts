@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import { loginAs } from './helpers'
 
 // The two flagship customer flows. The whole product hinges on these
-// not being broken in subtle ways (Hannah's password story / Chris's
+// not being broken in subtle ways (the password-change flow / an employee's
 // sickness submission story both came from real customer testing).
 // Cover them both as proper happy-path e2e flows so a routing bug or
 // silently-failing form gets caught at PR time.
@@ -86,7 +86,7 @@ test.describe('Flagship: Report sickness', () => {
 
     // The "Report sickness" link MUST land on /leave/report-sickness
     // (NOT /leave/new?type=sickness). The previous wrong-target link
-    // is exactly what made Chris's sickness submission silently fail.
+    // is exactly what made an employee's sickness submission silently fail.
     const reportSicknessLink = page
       .getByRole('link', { name: /^Report sickness$/i })
       .first()

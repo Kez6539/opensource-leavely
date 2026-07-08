@@ -84,7 +84,7 @@ export async function updateMyProfile(
   })
 }
 
-// Hannah's bug: there was no password-change form in the entire app.
+// Reported bug: there was no password-change form in the entire app.
 // Welcome email tells new users to "head to Settings → My account and
 // change your password" but that page didn't exist. Now it does — on the
 // profile page, gated by current-password verification, rate-limited per

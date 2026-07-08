@@ -116,7 +116,7 @@ export function ReportSicknessForm({
   const showFitNoteWarning = calendarDays > 7
 
   // Live bug fix: a customer reported submit doing nothing when
-  // logging sickness for an employee. Same shape as Chris's leave/new
+  // logging sickness for an employee. Same shape as an employee's leave/new
   // bug — the action throws a non-UserError (RBAC, billing, schema),
   // the rejection bubbles past handleSubmit, and the user sees
   // nothing. Wrap with try/catch and surface failures via the same

@@ -25,7 +25,7 @@ export default async function EmployeesPage({
   const { tenant, membership, user } = await requireTenant(tenantSlug)
   const canManage = isAtLeast(membership, 'MANAGER')
 
-  // Hannah's bug: an EMPLOYEE could see the full employee directory
+  // Reported bug: an EMPLOYEE could see the full employee directory
   // (everyone's name, job title, department) on tenants where the
   // optional `hideEmployeeList` toggle was off. EMPLOYEEs should never
   // see other people's records — that was a privacy leak. Now EMPLOYEEs

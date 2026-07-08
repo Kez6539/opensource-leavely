@@ -25,7 +25,7 @@ export default async function PerformancePage({
     select: { id: true },
   })
 
-  // Hannah's bug: she reported seeing "1 performance goal" before any
+  // Reported bug: she reported seeing "1 performance goal" before any
   // had been assigned to her. Defensively bail straight to an empty
   // state for non-managers without a linked Employee row — there's no
   // way to scope queries by "her" if we don't know which Employee she
@@ -135,7 +135,7 @@ export default async function PerformancePage({
     }),
   ])
 
-  // Hannah's bug: defence in depth — even if the where-clause filter
+  // Reported bug: defence in depth — even if the where-clause filter
   // somehow lets a row through, post-filter the results in JS so a
   // non-manager only ever sees goals assigned to themselves.
   const allowedSet =
